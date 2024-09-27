@@ -73,6 +73,7 @@ def log_out():
 @auth.route('/profile/<int:customer_id>')
 @login_required
 def profile(customer_id):
+    print("Customer id", customer_id)
     customer = Customer.query.get(customer_id)
     return render_template('profile.html', customer=customer)
 
