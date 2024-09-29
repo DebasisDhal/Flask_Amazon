@@ -130,3 +130,18 @@ def delete_item(item_id):
         return redirect('/shop-items')
 
     return render_template('404.html')
+
+@admin.route('/customers')
+@login_required
+def display_customers():
+    if current_user.id == 2:
+        customers = Customer.query.all()
+        return render_template('customers.html', customers=customers)
+    return render_template('404.html')
+
+@admin.route('/admin-page')
+@login_required
+def admin_page():
+    if current_user.id == 2:
+        return render_template('admin.html')
+    return render_template('404.html')
